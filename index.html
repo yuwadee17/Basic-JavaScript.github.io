@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            text-align: center;
+        }
+        .container {
+            max-width: 600px;
+            margin: auto;
+        }
+        input, button {
+            margin: 10px 0;
+            padding: 10px;
+            font-size: 16px;
+        }
+        button {
+            background-color: #87CEFF;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+        button:hover {
+            background-color: #000080;
+        }
+        #results {
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 0 auto;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>สูตรคูณ</h1>
+        <input type="number" id="numberInput" placeholder="กรอกตัวเลข" />
+        <button onclick="generateTable()">แสดงผลลัพธ์</button>
+        <div id="results"></div>
+    </div>
+
+    <script>
+        function generateTable() {
+            var number = document.getElementById('numberInput').value;
+            if (number === '' || isNaN(number)) {
+                alert('กรุณากรอกตัวเลขให้ถูกต้อง');
+                return;
+            }
+            
+            number = parseInt(number);
+
+            var resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = ''; // Clear any previous results
+
+            var tableHtml = '<h2>ผลลัพธ์ ' + number + '</h2><table><tr><th>Multiplier</th><th>Result</th></tr>';
+            for (var i = 1; i <= 12; i++) {
+                tableHtml += '<tr><td>' + number + ' x ' + i + '</td><td>' + (number * i) + '</td></tr>';
+            }
+            tableHtml += '</table>';
+
+            resultsDiv.innerHTML = tableHtml;
+        }
+    </script>
+</body>
+</html>
